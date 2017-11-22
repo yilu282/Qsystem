@@ -58,7 +58,15 @@
 					</tr>
 					<tr>	
 						<td class="line-name">项目状态：</td>
-						<td class="line-text">{{res.pro.status_p}}</td>
+						<td class="line-text">
+						<!--  1.从项目说明list中取一个2.判断是否是最后一个3.如果不是最后一段，换行  -->
+                                                {% for des in res.pro.description %}
+                                                	{{ des }}
+                                                	{% if not forloop.last %}
+                                                		</br>
+                                                	{% endif %}
+                                                {% endfor %}
+						</td>
 						{% if res.pro.real_launch_date %}
 							<td class="line-name">实际上线时间：</td>
 							<td class="line-text">{{res.pro.real_launch_date|date:"Y-m-d"}}&nbsp&nbsp
