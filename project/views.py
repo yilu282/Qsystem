@@ -1064,7 +1064,9 @@ def detail(request, pid='', nid=''):
                         signed_info['test_info'] = [1, test_info]
                     if us.realname in [u"招募产品", u"招募UI"]:
                         pd_info = signed_pro(pid, "PD", editboolean, current_uid)
-                        signed_info['pd_info'] = [1, pd_info]            
+                        signed_info['pd_info'] = [1, pd_info]
+            # test把项目描述由字符串拆成列表
+            pro.description = pro.description.split('\n')
             res = {'pro':pro, 'user':user, 'dt': dt, 'reuser': related_user, 'editbool': editboolean, 
                    'sql': sql_status, 'confirmation': confirmation, 'curuid': current_uid, 
                    'feedback': [len(pro_feedback), fc], 'signed_info': signed_info, 'ps': ps_info}
